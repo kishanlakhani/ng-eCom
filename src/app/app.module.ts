@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import {  AngularFireAuthModule } from 'angularfire2/auth';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CustomFormsModule } from 'ng2-validation';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,9 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { KeyValueFilterPipe } from './pipe/key-value-filter.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { SignupComponent } from './signup/signup.component';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ProductFormComponent,
+    KeyValueFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -44,6 +50,8 @@ import { SignupComponent } from './signup/signup.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    FormsModule,
+    CustomFormsModule,
     NgbModule
   ],
   providers: [],

@@ -1,1 +1,26 @@
-<p>admin-products works!</p>
+<p>
+  <a class="btn btn-primary" routerLink="/admin/products/new" routerLinkActive="router-link-active">New Product</a>
+</p>
+
+  <div class="form-group">
+    <label for="filter">Procduct Search : </label>
+    <input type="text" class="form-control" name="" id="filter" #query class="from-control" ngModel
+      (input)="filter(query.value)" placeholder="">
+  </div>
+
+<table class="table" *ngIf="products">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of filterProduct">
+      <td>{{ product['title'] }}</td>
+      <td>{{ product['price'] }}</td>
+      <td><a [routerLink]="['/admin/products',product['key']]" routerLinkActive="router-link-active">Edit...</a></td>
+    </tr>
+  </tbody>
+</table>

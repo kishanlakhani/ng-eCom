@@ -1,3 +1,15 @@
 .dropdown{
   cursor: pointer; 
 }
+
+.user-img{
+  background-size: 32px 32px;
+  border-radius: 50%;
+    display: block;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    height: 32px;
+    width: 32px;
+    z-index: 0;
+}
