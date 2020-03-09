@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AuthService } from './auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor(private db: AngularFireDatabase, private authService: AuthService) { }
+  constructor(private db: AngularFireDatabase, 
+              private authService: AuthService,
+              private http: HttpClient) { }
 
   create(product) {
     // console.log(this.authService.user$)
@@ -30,10 +33,17 @@ export class ProductService {
     return this.db.object('/products/' + uid + '/' + productId).remove();  
   }
 
+  //for particular user all product
   getAll() {
       let uid = localStorage.getItem('uid');
       console.log(uid);
       return this.db.object('/products/' + uid).valueChanges();
+  }
+
+  //for show all product
+  getAllProduct(){
+    this.http.get('https://ng-ecommerce-b979f.firebaseio.com/products.json?title=Titanic').subscribe(r=>console.log(r));
+    return this.db.object('/products').valueChanges();
   }
 
   getSingleProduct(productId){

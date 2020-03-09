@@ -32,7 +32,7 @@ export class ProductFormComponent implements OnInit {
     this.productId = route.snapshot.paramMap.get('id');
     if (this.productId) {
       this.productSubscription = productService.getSingleProduct(this.productId).subscribe(x => {
-        console.log(x);
+        // console.log(x);
         this.product = {
           title: x['title'],
           price: x['price'],

@@ -14,7 +14,7 @@ export class AdminProductsComponent implements OnInit {
         this.products = [];
         this.filterProduct = [];
         for (const key in x) {
-          console.log(x);
+          // console.log(x);
           if (x.hasOwnProperty(key)) {
             const element = x[key];
             this.products.push({key,...x[key]})
@@ -25,7 +25,6 @@ export class AdminProductsComponent implements OnInit {
   }
 
   filter(query:string){
-    console.log(query);
     this.filterProduct =  query ?
                  this.products.filter(p=>String(p['title']).toLowerCase().includes(query.toLowerCase())) : this.products;        
   }
